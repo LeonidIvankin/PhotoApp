@@ -9,12 +9,9 @@ import butterknife.ButterKnife;
 
 public class ColorSchemeActivity extends AppCompatActivity {
 
-	@BindView(R.id.button1)
-	Button button1;
-	@BindView(R.id.button2)
-	Button button2;
-	@BindView(R.id.button3)
-	Button button3;
+	@BindView(R.id.button1) Button button1;
+	@BindView(R.id.button2) Button button2;
+	@BindView(R.id.button3) Button button3;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
