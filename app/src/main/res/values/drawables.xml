@@ -1,0 +1,5 @@
+<resources>
+	<item name="nav_icon_item_selecting_color_scheme" type="drawable">
+		@android:drawable/ic_menu_camera
+	</item>
+</resources>
