@@ -20,11 +20,11 @@ public class MainActivity extends AppCompatActivity {
 		setContentView(R.layout.activity_main);
 		ButterKnife.bind(this);
 
-		fabOnClickListener();
+		addFabListener();
 
 	}
 
-	private void fabOnClickListener() {
+	private void addFabListener() {
 		floatingActionButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
