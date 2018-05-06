@@ -3,6 +3,7 @@ package ru.leonidivankin.photovkapp;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -42,8 +43,8 @@ public class BlankFragment extends Fragment {
 
 		@Override
 		public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-			View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recycler_view, parent, false);
-			return new MyViewHolder(view);
+			CardView cardView = (CardView) LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recycler_view, parent, false);
+			return new MyViewHolder(cardView);
 		}
 
 		@Override
@@ -61,10 +62,10 @@ public class BlankFragment extends Fragment {
 		TextView textView;
 		ImageView imageView;
 
-		public MyViewHolder(View view) {
-			super(view);
-			textView = view.findViewById(R.id.text_view);
-			imageView = view.findViewById(R.id.image_view);
+		public MyViewHolder(CardView cardView) {
+			super(cardView);
+			textView = cardView.findViewById(R.id.text_view);
+			imageView = cardView.findViewById(R.id.image_view);
 		}
 
 		private void bind(Fruit fruit) {
