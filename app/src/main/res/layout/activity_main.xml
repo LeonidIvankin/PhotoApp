@@ -6,6 +6,6 @@
 	<TextView
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:text="Only v21" />
+		android:text="@string/only_starting_with_21_versions" />
 
 </FrameLayout>
