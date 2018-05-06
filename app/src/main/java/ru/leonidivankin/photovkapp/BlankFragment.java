@@ -3,6 +3,7 @@ package ru.leonidivankin.photovkapp;
 
 import android.content.res.ColorStateList;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.GridLayoutManager;
@@ -67,7 +68,9 @@ public class BlankFragment extends Fragment {
 		@Override
 		public void onBindViewHolder(MyViewHolder holder, int position) {
 			holder.bind(fruits[position]);
-			holder.setListener(v -> applyEditImageViewColor(holder.imageViewStar));
+			holder.setListener(v -> {
+				applyEditImageViewColor(holder.imageViewStar);
+			});
 		}
 
 		//установка цвета звёздочке
@@ -77,8 +80,10 @@ public class BlankFragment extends Fragment {
 
 			if (defaultColorImageViewStar != color) {
 				imageViewStar.setImageTintList(ColorStateList.valueOf(defaultColorImageViewStar));
+				Snackbar.make(imageViewStar, "Фото удалено из \"Понравившиеся\"", Snackbar.LENGTH_LONG).show();
 			} else {
 				imageViewStar.setImageTintList(ColorStateList.valueOf(colorImageViewStar));
+				Snackbar.make(imageViewStar, "Фото добавлено в \"Понравившиеся\"", Snackbar.LENGTH_LONG).show();
 			}
 
 		}
