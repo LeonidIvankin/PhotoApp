@@ -47,26 +47,26 @@ public class BlankFragment extends Fragment {
 		GridLayoutManager layoutManager = new GridLayoutManager(v.getContext(), 2);
 		layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 		recyclerView.setLayoutManager(layoutManager);
-		MyAdapter myAdapter = new MyAdapter(Fruit.fruits);
-		recyclerView.setAdapter(myAdapter);
+		RecyclerViewAdapter recyclerViewAdapter = new RecyclerViewAdapter(Fruit.fruits);
+		recyclerView.setAdapter(recyclerViewAdapter);
 	}
 
-	private class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
+	private class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewViewHolder> {
 
 		private Fruit[] fruits;
 
-		public MyAdapter(Fruit[] fruits) {
+		public RecyclerViewAdapter(Fruit[] fruits) {
 			this.fruits = fruits;
 		}
 
 		@Override
-		public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+		public RecyclerViewViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 			CardView cardView = (CardView) LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recycler_view, parent, false);
-			return new MyViewHolder(cardView);
+			return new RecyclerViewViewHolder(cardView);
 		}
 
 		@Override
-		public void onBindViewHolder(MyViewHolder holder, int position) {
+		public void onBindViewHolder(RecyclerViewViewHolder holder, int position) {
 			holder.bind(fruits[position]);
 			holder.setListener(v -> {
 				applyEditImageViewColor(holder.imageViewStar);
@@ -94,14 +94,14 @@ public class BlankFragment extends Fragment {
 		}
 	}
 
-	private class MyViewHolder extends RecyclerView.ViewHolder {
+	private class RecyclerViewViewHolder extends RecyclerView.ViewHolder {
 		TextView textView;
 		ImageView imageViewPhoto;
 		ImageView imageViewStar;
 
-		public MyViewHolder(CardView cardView) {
+		public RecyclerViewViewHolder(CardView cardView) {
 			super(cardView);
-			textView = cardView.findViewById(R.id.text_view);
+			textView = cardView.findViewById(R.id.id_text_view);
 			imageViewPhoto = cardView.findViewById(R.id.id_image_view_photo);
 			imageViewStar = cardView.findViewById(R.id.id_image_view_star);//присвоить звёздочке дефолтный цвет
 
