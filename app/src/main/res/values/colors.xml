@@ -21,4 +21,6 @@
 	<color name="colors_deep_purple_green_secondary_text">#757575</color>
 	<color name="colors_deep_purple_green_icons">#FFFFFF</color>
 	<color name="colors_deep_purple_green_divider">#BDBDBD</color>
+
+	<color name="color_star_black">#FF000000</color>
 </resources>
