@@ -1,26 +1,5 @@
 <resources>
-	<string name="tab_text_1">Tab 1</string>
-	<string name="tab_text_2">Tab 2</string>
-	<string name="tab_text_3">Tab 3</string>
+
 	<string name="app_name">photoVKapp</string>
-	<string name="favourites_fragment">FavouritesFragment</string>
-	<string name="navigation_drawer_open">Open navigation drawer</string>
-	<string name="navigation_drawer_close">Close navigation drawer</string>
-	<string name="action_settings">Settings</string>
-	<string name="leonid_ivankin">Leonid Ivankin</string>
-	<string name="email">lim14@yandex.ru</string>
 
-	<string name="nav_text_item_selecting_color_scheme">Selecting a color scheme</string>
-	<string name="fab_behavior">ru.leonidivankin.photovkapp.FabHideOnScroll</string>
-
-	<string name="nbv_database">database</string>
-	<string name="nbv_web">web</string>
-	<string name="nbv_common">common</string>
-	<string name="text_fragment_database">fragment database</string>
-	<string name="text_fragment_web">fragment web</string>
-	<string name="text_fragment_common">fragment common</string>
-
-	<string name="nav_text_item_selecting_color_scheme">Selecting a color scheme</string><string name="fab_behavior">ru.leonidivankin.photovkapp.FabHideOnScroll</string>
-	<string name="only_starting_with_21_versions">Only starting with 21 versions</string>
-	<string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
