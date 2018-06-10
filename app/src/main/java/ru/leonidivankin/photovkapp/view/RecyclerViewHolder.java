@@ -10,24 +10,24 @@ import ru.leonidivankin.photovkapp.R;
 
 public class RecyclerViewHolder extends RecyclerView.ViewHolder implements ListRowView {
 
-	@BindView(R.id.image_view_item_recycler_view)
+	/*@BindView(R.id.image_view_item_recycler_view)
 	ImageView imageView;
-	int pos = 0;
+	int pos = 0;*/
 
 	public RecyclerViewHolder(View itemView) {
 		super(itemView);
 
-		ButterKnife.bind(this, itemView);
+		/*ButterKnife.bind(this, itemView);*/
 	}
 
 
 	@Override
 	public void setImageResource(int imageResource) {
-		imageView.setImageResource(imageResource);
+//		imageView.setImageResource(imageResource);
 	}
 
 	@Override
 	public int getPos() {
-		return pos;
+		return 0;
 	}
 }

@@ -10,21 +10,40 @@ import io.reactivex.Scheduler;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import ru.leonidivankin.photovkapp.model.FruitRepo;
+import ru.leonidivankin.photovkapp.model.entity.User;
+import ru.leonidivankin.photovkapp.model.repo.UsersRepo;
 import ru.leonidivankin.photovkapp.view.IImagePresenter;
+import ru.leonidivankin.photovkapp.view.IRepoListPresenter;
 import ru.leonidivankin.photovkapp.view.ListRowView;
 import ru.leonidivankin.photovkapp.view.MainView;
+import ru.leonidivankin.photovkapp.view.RepoRowView;
 import timber.log.Timber;
 
 @InjectViewState
-public class MainPresenter extends MvpPresenter<MainView>{
+public class MainPresenter extends MvpPresenter<MainView> implements IRepoListPresenter{
 
 	private Scheduler mainThreadScheduler;
 	private FruitRepo fruitRepo;
 	private ImagePresenter listPresenter = new ImagePresenter();
+	private UsersRepo usersRepo;
+	private User user;
 
 	public MainPresenter(Scheduler mainThreadScheduler){
 		this.fruitRepo = new FruitRepo();
 		this.mainThreadScheduler = mainThreadScheduler;
+		usersRepo = new UsersRepo();
+	}
+
+	@Override
+	public void bindRepoListRow(int pos, RepoRowView rowView) {
+		if (user != null) {
+			rowView.setTitle(user.getRepos().get(pos).getName());
+		}
+	}
+
+	@Override
+	public int getRepoCount() {
+		return user == null || user.getRepos() == null ? 0 : user.getRepos().size();
 	}
 
 
@@ -48,6 +67,7 @@ public class MainPresenter extends MvpPresenter<MainView>{
 		super.onFirstViewAttach();
 		getViewState().initRecyclerView();
 		loadStrings();
+		loadData();
 	}
 
 	private void loadStrings(){
@@ -69,5 +89,27 @@ public class MainPresenter extends MvpPresenter<MainView>{
 
 	public ImagePresenter getListPresenter(){
 		return listPresenter;
+	}
+
+	private  void loadData(){
+		Disposable disposable = usersRepo.getUser("AntonZarytski")
+				.subscribe(user -> {
+					this.user = user;
+					usersRepo.getUserRepos(user.getReposUrl())
+							.observeOn(mainThreadScheduler)
+							.subscribe(repositories ->{
+								this.user.setRepos(repositories);
+								getViewState().setUserNameText(user.getLogin());
+								getViewState().loadImage(user.getAvatarUrl());
+								getViewState().setIdText(user.getId());
+								getViewState().updateRepoList();
+							}, throwable -> {
+								Timber.e("Failed to get user repos");
+							});
+
+				}, throwable -> {
+					Timber.e("Failed to get name");
+				});
+
 	}
 }

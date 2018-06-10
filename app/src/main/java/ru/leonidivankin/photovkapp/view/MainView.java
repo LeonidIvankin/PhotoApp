@@ -8,4 +8,8 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 public interface MainView extends MvpView {
 	void initRecyclerView();
 	void updateRecyclerView();
+	void setUserNameText(String username);
+	void setIdText(String id);
+	void loadImage(String url);
+	void updateRepoList();
 }

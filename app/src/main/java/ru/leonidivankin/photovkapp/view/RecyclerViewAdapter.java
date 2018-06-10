@@ -9,26 +9,28 @@ import ru.leonidivankin.photovkapp.R;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolder> {
 
-	IImagePresenter presenter;
+	//IImagePresenter presenter;
 
 	public RecyclerViewAdapter(IImagePresenter presenter) {
-		this.presenter = presenter;
+	//	this.presenter = presenter;
 	}
 
 	@Override
 	public RecyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 		View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recycler_view, parent, false);
-		return new RecyclerViewHolder(view);
+		//return new RecyclerViewHolder(view);
+		return null;
 	}
 
 	@Override
 	public void onBindViewHolder(RecyclerViewHolder holder, int position) {
-		holder.pos = position;
-		presenter.bindView((ListRowView) holder);
+		//holder.pos = position;
+	//	presenter.bindView(holder);
 	}
 
 	@Override
 	public int getItemCount() {
-		return presenter.getImageCount();
+	//	return presenter.getImageCount();
+		return 0;
 	}
 }
