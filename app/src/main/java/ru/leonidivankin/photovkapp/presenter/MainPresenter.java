@@ -10,6 +10,8 @@ import java.util.List;
 import io.reactivex.Scheduler;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
+import ru.leonidivankin.photovkapp.model.entity.Photos;
+import ru.leonidivankin.photovkapp.model.repo.PhotosRepo;
 import ru.leonidivankin.photovkapp.model.repo.StringsRepo;
 import ru.leonidivankin.photovkapp.view.IListPresenter;
 import ru.leonidivankin.photovkapp.view.ListRowView;
@@ -18,28 +20,31 @@ import timber.log.Timber;
 
 @InjectViewState
 public class MainPresenter extends MvpPresenter<MainView>{
-	Scheduler mainThreadScheduler;
-	StringsRepo stringsRepo;
-	ListPresenter listPresenter = new ListPresenter();
+	private Scheduler mainThreadScheduler;
+	private StringsRepo stringsRepo;
+	private PhotosRepo photosRepo;
+	private ListPresenter listPresenter = new ListPresenter();
 
 	public MainPresenter(Scheduler mainThreadScheduler){
 		this.stringsRepo = new StringsRepo();
+		photosRepo = new PhotosRepo();
 		this.mainThreadScheduler = mainThreadScheduler;
 	}
 
 	private class ListPresenter implements IListPresenter {
 
-		List<String> strings = new ArrayList();
+		List<Photos.Hits> photos = new ArrayList();
 
 
 		@Override
 		public void bindView(ListRowView holder) {
-			holder.setText(strings.get(holder.getPos()));
+			//holder.setText(photos.get(holder.getPos()));
+			holder.setText(photos.get(holder.getPos()).getPreviewURL());
 		}
 
 		@Override
 		public int getStringCount() {
-			return strings.size();
+			return photos.size();
 		}
 	}
 
@@ -51,12 +56,12 @@ public class MainPresenter extends MvpPresenter<MainView>{
 	}
 
 	private void loadStrings() {
-		Disposable disposable = stringsRepo.getData().subscribeOn(Schedulers.io())
-				.observeOn(Schedulers.computation())
+		Disposable disposable = photosRepo.getPhoto("9250926-552b631cddef606bad3e807d2")
+				.subscribeOn(Schedulers.io())
 				.observeOn(mainThreadScheduler)
-				.subscribe(strings -> {
+				.subscribe(photo -> {
 					Timber.d("result in " + Thread.currentThread().getName());
-					this.listPresenter.strings.addAll(strings);
+					this.listPresenter.photos.addAll(photo.getHits());
 					getViewState().updateList();
 				}, throwable -> {
 					Timber.e(throwable);

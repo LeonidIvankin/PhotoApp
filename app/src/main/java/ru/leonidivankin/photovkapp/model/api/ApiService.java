@@ -12,11 +12,6 @@ import ru.leonidivankin.photovkapp.model.entity.Repository;
 import ru.leonidivankin.photovkapp.model.entity.User;
 
 public interface ApiService {
-	@GET("/users/{user}")
-	Observable<User> getUser(@Path("user") String username);
-
-	@GET
-	Observable<List<Repository>> getUserRepos(@Url String url);
 
 	@GET("api")
 	Observable<Photos> getPhotos(@Query("key") String key);

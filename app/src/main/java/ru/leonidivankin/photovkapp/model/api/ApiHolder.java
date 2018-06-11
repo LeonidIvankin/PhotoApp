@@ -22,8 +22,9 @@ public class ApiHolder {
 
 	private ApiHolder() {
 		Gson gson = new GsonBuilder()
-				//.setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
+				.setFieldNamingPolicy(FieldNamingPolicy.IDENTITY)
 				.create();
+
 		//https://pixabay.com/api/?key=9250926-552b631cddef606bad3e807d2
 		api = new Retrofit.Builder()
 				.baseUrl("http://pixabay.com")
