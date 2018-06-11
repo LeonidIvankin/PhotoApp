@@ -1,6 +1,6 @@
 package ru.leonidivankin.photovkapp.view;
 
-public interface IImagePresenter {
+public interface IListPresenter {
 	void bindView(ListRowView holder);
-	int getImageCount();
+	int getStringCount();
 }

@@ -11,11 +11,11 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import ru.leonidivankin.photovkapp.R;
 
-public class RepoRVAdapter extends RecyclerView.Adapter<RepoRVAdapter.ViewHolder> {
+class StringsRVAdapter extends RecyclerView.Adapter<StringsRVAdapter.ViewHolder>{
 
-	IRepoListPresenter presenter;
+	IListPresenter presenter;
 
-	public RepoRVAdapter(IRepoListPresenter presenter) {
+	public StringsRVAdapter(IListPresenter presenter) {
 		this.presenter = presenter;
 	}
 
@@ -27,17 +27,19 @@ public class RepoRVAdapter extends RecyclerView.Adapter<RepoRVAdapter.ViewHolder
 
 	@Override
 	public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-		presenter.bindRepoListRow(position, holder);
+		holder.pos = position;
+		presenter.bindView(holder);
 	}
 
 	@Override
 	public int getItemCount() {
-		return presenter.getRepoCount();
+		return presenter.getStringCount();
 	}
 
-	public class ViewHolder extends RecyclerView.ViewHolder implements RepoRowView{
+	class ViewHolder extends RecyclerView.ViewHolder implements ListRowView{
+		@BindView(R.id.tv_title) TextView textView;
+		int pos = 0;
 
-		@BindView(R.id.text_view_item_recycler_view) TextView textView;
 
 		public ViewHolder(View itemView) {
 			super(itemView);
@@ -45,8 +47,13 @@ public class RepoRVAdapter extends RecyclerView.Adapter<RepoRVAdapter.ViewHolder
 		}
 
 		@Override
-		public void setTitle(String title) {
-			textView.setText(title);
+		public void setText(String text) {
+			textView.setText(text);
+		}
+
+		@Override
+		public int getPos() {
+			return pos;
 		}
 	}
 }

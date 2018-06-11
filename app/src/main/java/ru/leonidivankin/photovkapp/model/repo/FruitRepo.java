@@ -1,4 +1,4 @@
-package ru.leonidivankin.photovkapp.model;
+package ru.leonidivankin.photovkapp.model.repo;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -22,11 +22,11 @@ public class ApiHolder {
 
 	private ApiHolder() {
 		Gson gson = new GsonBuilder()
-				.setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
+				//.setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
 				.create();
-		//https://api.github.com/users/AntonZarytski
+		//https://pixabay.com/api/?key=9250926-552b631cddef606bad3e807d2
 		api = new Retrofit.Builder()
-				.baseUrl("https://api.github.com")
+				.baseUrl("http://pixabay.com")
 				.addCallAdapterFactory(RxJava2CallAdapterFactory.create())
 				.addConverterFactory(GsonConverterFactory.create(gson))
 				.build()

@@ -1,7 +1,6 @@
 package ru.leonidivankin.photovkapp.view;
 
 public interface ListRowView {
-
-	void setImageResource(int imageResource);
+	void setText(String text);
 	int getPos();
 }
