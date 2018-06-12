@@ -7,6 +7,6 @@ import ru.leonidivankin.photovkapp.model.entity.Photos;
 
 public interface ICache {
 	void putPhoto(Photos photos);
-	Observable<List<Photos>> getPhoto();
+	Observable<Photos> getPhoto();
 
 }

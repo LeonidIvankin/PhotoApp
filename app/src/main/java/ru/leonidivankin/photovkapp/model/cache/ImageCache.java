@@ -10,6 +10,7 @@ import java.security.NoSuchAlgorithmException;
 
 import io.realm.Realm;
 import ru.leonidivankin.photovkapp.app.App;
+import ru.leonidivankin.photovkapp.model.entity.realm.CachedImage;
 import timber.log.Timber;
 
 public class ImageCache {
@@ -29,7 +30,7 @@ public class ImageCache {
 
 		final File imageFile = new File(getImageDir(), md5(url) + fileFormat);
 
-		//сохраняем картинку
+		//сохраняем картинку на карту памяти
 		FileOutputStream fos;
 		try{
 			fos = new FileOutputStream(imageFile);

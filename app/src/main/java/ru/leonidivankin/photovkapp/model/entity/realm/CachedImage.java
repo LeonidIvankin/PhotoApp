@@ -1,4 +1,4 @@
-package ru.leonidivankin.photovkapp.model.cache;
+package ru.leonidivankin.photovkapp.model.entity.realm;
 
 import io.realm.RealmObject;
 

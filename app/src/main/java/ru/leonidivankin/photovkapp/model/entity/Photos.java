@@ -3,8 +3,12 @@ package ru.leonidivankin.photovkapp.model.entity;
 import java.util.List;
 
 public class Photos {
-	String totalHits;
-	List<Hits> hits;
+	private String totalHits;
+	private List<Hits> hits;
+
+	public Photos(String totalHits) {
+		this.totalHits = totalHits;
+	}
 
 	public String getTotalHits() {
 		return totalHits;
@@ -14,17 +18,9 @@ public class Photos {
 		return hits;
 	}
 
-	public class Hits{
-		String largeImageURL;
-		String previewURL;
-
-		public String getPreviewURL() {
-			return previewURL;
-		}
-
-		public String getLargeImageURL() {
-			return largeImageURL;
-		}
-
+	public void setHits(List<Hits> hits) {
+		this.hits = hits;
 	}
+
+
 }

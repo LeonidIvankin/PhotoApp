@@ -9,8 +9,7 @@ import java.util.List;
 
 import io.reactivex.Scheduler;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.schedulers.Schedulers;
-import ru.leonidivankin.photovkapp.model.entity.Photos;
+import ru.leonidivankin.photovkapp.model.entity.Hits;
 import ru.leonidivankin.photovkapp.model.repo.PhotosRepo;
 import ru.leonidivankin.photovkapp.model.repo.StringsRepo;
 import ru.leonidivankin.photovkapp.view.IListPresenter;
@@ -33,7 +32,7 @@ public class MainPresenter extends MvpPresenter<MainView>{
 
 	private class ListPresenter implements IListPresenter {
 
-		List<Photos.Hits> photos = new ArrayList();
+		List<Hits> photos = new ArrayList();
 
 
 		@Override
@@ -56,7 +55,7 @@ public class MainPresenter extends MvpPresenter<MainView>{
 	}
 
 	private void loadStrings() {
-		Disposable disposable = photosRepo.getPhoto("9250926-552b631cddef606bad3e807d2")
+		Disposable disposable = photosRepo.getPhoto()
 				.observeOn(mainThreadScheduler)
 				.subscribe(photo -> {
 					Timber.d("result in " + Thread.currentThread().getName());
