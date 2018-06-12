@@ -57,7 +57,6 @@ public class MainPresenter extends MvpPresenter<MainView>{
 
 	private void loadStrings() {
 		Disposable disposable = photosRepo.getPhoto("9250926-552b631cddef606bad3e807d2")
-				.subscribeOn(Schedulers.io())
 				.observeOn(mainThreadScheduler)
 				.subscribe(photo -> {
 					Timber.d("result in " + Thread.currentThread().getName());
