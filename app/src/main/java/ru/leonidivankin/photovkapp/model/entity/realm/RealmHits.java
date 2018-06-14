@@ -7,9 +7,14 @@ public class RealmHits extends RealmObject {
 
 	@PrimaryKey
 	String previewURL;
+	String tags;
 
-	public void setPreviewURL(String previewURL) {
-		this.previewURL = previewURL;
+	public String getTags() {
+		return tags;
+	}
+
+	public void setTags(String tags) {
+		this.tags = tags;
 	}
 
 	public String getPreviewURL() {

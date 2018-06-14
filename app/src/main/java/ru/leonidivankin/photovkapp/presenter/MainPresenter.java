@@ -14,7 +14,7 @@ import io.reactivex.disposables.Disposable;
 import ru.leonidivankin.photovkapp.model.entity.Hits;
 import ru.leonidivankin.photovkapp.model.repo.PhotosRepo;
 import ru.leonidivankin.photovkapp.view.IListPresenter;
-import ru.leonidivankin.photovkapp.view.ListRowView;
+import ru.leonidivankin.photovkapp.view.ListPhotosView;
 import ru.leonidivankin.photovkapp.view.MainView;
 import timber.log.Timber;
 
@@ -32,14 +32,14 @@ public class MainPresenter extends MvpPresenter<MainView>{
 
 		List<Hits> photos = new ArrayList();
 
-
 		@Override
-		public void bindView(ListRowView holder) {
-			holder.setText(photos.get(holder.getPos()).getPreviewURL());
+		public void bindView(ListPhotosView holder) {
+			holder.setPreviewUrl(photos.get(holder.getPos()).getPreviewURL());
+			holder.setTags(photos.get(holder.getPos()).getTags());
 		}
 
 		@Override
-		public int getStringCount() {
+		public int getPhotosCount() {
 			return photos.size();
 		}
 	}
@@ -48,19 +48,17 @@ public class MainPresenter extends MvpPresenter<MainView>{
 	protected void onFirstViewAttach() {
 		super.onFirstViewAttach();
 		getViewState().init();
-		loadStrings();
+		loadPhotos();
 	}
 
-	private void loadStrings() {
+	private void loadPhotos() {
 		Disposable disposable = photosRepo.getPhoto()
 				.observeOn(mainThreadScheduler)
 				.subscribe(photo -> {
 					Timber.d("result in " + Thread.currentThread().getName());
 					this.listPresenter.photos.addAll(photo.getHits());
 					getViewState().updateList();
-				}, throwable -> {
-					Timber.e(throwable);
-				});
+				}, throwable -> Timber.e(throwable));
 	}
 
 	public ListPresenter getListPresenter(){

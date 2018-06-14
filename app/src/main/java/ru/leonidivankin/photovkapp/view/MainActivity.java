@@ -1,7 +1,7 @@
 package ru.leonidivankin.photovkapp.view;
 
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.arellomobile.mvp.MvpAppCompatActivity;
@@ -19,7 +19,7 @@ import ru.leonidivankin.photovkapp.presenter.MainPresenter;
 
 public class MainActivity extends MvpAppCompatActivity implements MainView {
 
-	StringsRVAdapter adapter;
+	RecyclerViewAdapter adapter;
 
 	@InjectPresenter MainPresenter presenter;
 	@Inject App app;
@@ -45,8 +45,8 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
 
 	@Override
 	public void init() {
-		recyclerView.setLayoutManager(new LinearLayoutManager(this));
-		adapter = new StringsRVAdapter(presenter.getListPresenter());
+		recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+		adapter = new RecyclerViewAdapter(presenter.getListPresenter());
 		recyclerView.setAdapter(adapter);
 	}
 

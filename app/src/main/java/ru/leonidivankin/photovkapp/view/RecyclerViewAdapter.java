@@ -14,48 +14,52 @@ import ru.leonidivankin.photovkapp.R;
 import ru.leonidivankin.photovkapp.model.image.IImageLoader;
 import ru.leonidivankin.photovkapp.model.image.android.GlideImageLoader;
 
-class StringsRVAdapter extends RecyclerView.Adapter<StringsRVAdapter.ViewHolder>{
+class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.RecyclerViewHolder>{
 
 	IListPresenter presenter;
 
-	public StringsRVAdapter(IListPresenter presenter) {
+	public RecyclerViewAdapter(IListPresenter presenter) {
 		this.presenter = presenter;
 	}
 
 	@NonNull
 	@Override
-	public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-		return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recycler_view, parent, false));
+	public RecyclerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+		return new RecyclerViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recycler_view, parent, false));
 	}
 
 	@Override
-	public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+	public void onBindViewHolder(@NonNull RecyclerViewHolder holder, int position) {
 		holder.pos = position;
 		presenter.bindView(holder);
 	}
 
 	@Override
 	public int getItemCount() {
-		return presenter.getStringCount();
+		return presenter.getPhotosCount();
 	}
 
-	class ViewHolder extends RecyclerView.ViewHolder implements ListRowView{
-		@BindView(R.id.tv_title) TextView textView;
+	class RecyclerViewHolder extends RecyclerView.ViewHolder implements ListPhotosView {
+		@BindView(R.id.text_view_item_tag) TextView textViewItemTag;
 		@BindView(R.id.image_view_item_recycler_view) ImageView imageViewItemRecyclerView;
 		int pos = 0;
 		IImageLoader<ImageView> imageLoader;
 
 
-		public ViewHolder(View itemView) {
+		public RecyclerViewHolder(View itemView) {
 			super(itemView);
 			ButterKnife.bind(this, itemView);
 			imageLoader = new GlideImageLoader();
 		}
 
 		@Override
-		public void setText(String text) {
-			textView.setText(text);
-			imageLoader.loadInto(text, imageViewItemRecyclerView);
+		public void setPreviewUrl(String previewUrl) {
+			imageLoader.loadInto(previewUrl, imageViewItemRecyclerView);
+		}
+
+		@Override
+		public void setTags(String tag) {
+			textViewItemTag.setText(tag);
 		}
 
 		@Override

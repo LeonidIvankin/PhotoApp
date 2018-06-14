@@ -43,7 +43,9 @@ public class RealmCache implements ICache {
 
 			for (Hits hit : photos.getHits()) {
 				RealmHits realmHits = realm.createObject(RealmHits.class, hit.getPreviewURL());
+				realmHits.setTags(hit.getTags());
 				finalRealmPhotos.getHits().add(realmHits);
+
 			}
 		});
 
@@ -77,6 +79,7 @@ public class RealmCache implements ICache {
 				for (RealmHits realmHits : realmPhotos.getHits()) {
 					Hits hits = new Hits();
 					hits.setPreviewURL(realmHits.getPreviewURL());
+					hits.setTags(realmHits.getTags());
 					hitsList.add(hits);
 				}
 

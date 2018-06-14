@@ -31,9 +31,7 @@ public class ImageCache {
 		final File imageFile = new File(getImageDir(), md5(url) + fileFormat);
 
 		//сохраняем картинку на карту памяти
-		FileOutputStream fos;
-		try{
-			fos = new FileOutputStream(imageFile);
+		try(FileOutputStream fos = new FileOutputStream(imageFile)){
 			bitmap.compress(fileFormat.equals("jpg") ? Bitmap.CompressFormat.JPEG : Bitmap.CompressFormat.PNG, 100, fos);
 			fos.close();
 		}catch(Exception e){

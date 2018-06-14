@@ -21,7 +21,6 @@ public class ApiModule {
 	@Singleton
 	@Provides
 	public ApiService api(Retrofit retrofit){
-		//https://pixabay.com/api/?key=9250926-552b631cddef606bad3e807d2
 		return retrofit.create(ApiService.class);
 	}
 
@@ -29,6 +28,7 @@ public class ApiModule {
 	public Retrofit retrofit(OkHttpClient client, GsonConverterFactory gsonConverterFactory,
 							 RxJava2CallAdapterFactory rxJava2CallAdapterFactory){
 
+		//https://pixabay.com/api/?key=9250926-552b631cddef606bad3e807d2
 		return new Retrofit.Builder()
 				.baseUrl("http://pixabay.com")
 				.client(client)
