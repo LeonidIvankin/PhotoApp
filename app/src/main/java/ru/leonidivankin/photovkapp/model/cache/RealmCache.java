@@ -30,8 +30,14 @@ public class RealmCache implements ICache {
 			});
 		}
 
+		realmPhotos = realm
+				.where(RealmPhotos.class)
+				.equalTo("totalHits", photos.getTotalHits())
+				.findFirst();
+
 		RealmPhotos finalRealmPhotos = realmPhotos;
 
+		//удаляем все объекты из realm и записываем новые
 		realm.executeTransaction(innerRealm -> {
 			finalRealmPhotos.getHits().deleteAllFromRealm();
 
@@ -51,15 +57,19 @@ public class RealmCache implements ICache {
 		return Observable.create(e -> {
 			Realm realm = Realm.getDefaultInstance();
 
+			//ищем книгу
 			RealmPhotos realmPhotos = realm
 					.where(RealmPhotos.class)
 					.equalTo("totalHits", "500")
 					//FIXME
 					.findFirst();
 
+			//если книги не существует, выдаём ошибку
 			if (realm == null) {
 				Timber.d("error getting photos from realm");
 			} else {
+
+				//в противном случае записываем из realm в объект photos данные
 				Photos photos = new Photos(realmPhotos.getTotalHits());
 
 				List<Hits> hitsList = new ArrayList();
