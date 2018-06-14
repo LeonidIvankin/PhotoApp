@@ -37,7 +37,10 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
 
 	@ProvidePresenter
 	public MainPresenter provideMainPresenter() {
-		return new MainPresenter(AndroidSchedulers.mainThread());
+		MainPresenter presenter = new MainPresenter(AndroidSchedulers.mainThread());
+		App.getInstance().getAppComponent().inject(presenter);
+
+		return presenter;
 	}
 
 	@Override

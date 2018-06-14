@@ -7,11 +7,12 @@ import com.arellomobile.mvp.MvpPresenter;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import io.reactivex.Scheduler;
 import io.reactivex.disposables.Disposable;
 import ru.leonidivankin.photovkapp.model.entity.Hits;
 import ru.leonidivankin.photovkapp.model.repo.PhotosRepo;
-import ru.leonidivankin.photovkapp.model.repo.StringsRepo;
 import ru.leonidivankin.photovkapp.view.IListPresenter;
 import ru.leonidivankin.photovkapp.view.ListRowView;
 import ru.leonidivankin.photovkapp.view.MainView;
@@ -20,13 +21,10 @@ import timber.log.Timber;
 @InjectViewState
 public class MainPresenter extends MvpPresenter<MainView>{
 	private Scheduler mainThreadScheduler;
-	private StringsRepo stringsRepo;
-	private PhotosRepo photosRepo;
+	@Inject PhotosRepo photosRepo;
 	private ListPresenter listPresenter = new ListPresenter();
 
 	public MainPresenter(Scheduler mainThreadScheduler){
-		this.stringsRepo = new StringsRepo();
-		photosRepo = new PhotosRepo();
 		this.mainThreadScheduler = mainThreadScheduler;
 	}
 
@@ -37,7 +35,6 @@ public class MainPresenter extends MvpPresenter<MainView>{
 
 		@Override
 		public void bindView(ListRowView holder) {
-			//holder.setText(photos.get(holder.getPos()));
 			holder.setText(photos.get(holder.getPos()).getPreviewURL());
 		}
 
