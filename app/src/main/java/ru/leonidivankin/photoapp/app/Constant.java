@@ -3,8 +3,8 @@ package ru.leonidivankin.photoapp.app;
 public interface Constant {
 
 	//http request
-	//https://pixabay.com/api/?key=9250926-552b631cddef606bad3e807d2
-	String BASE_URL = "https://api.github.com/";
+	//http://pixabay.com/api/?key=9250926-552b631cddef606bad3e807d2
+	String BASE_URL = "http://pixabay.com";
 	String TOKEN_KEY = "9250926-552b631cddef606bad3e807d2";
 
 	//directory

@@ -3,6 +3,8 @@ package ru.leonidivankin.photoapp.view;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.ProgressBar;
 
 import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.mvp.presenter.InjectPresenter;
@@ -25,6 +27,7 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
 	@Inject App app;
 
 	@BindView(R.id.recycler_view) RecyclerView recyclerView;
+	@BindView(R.id.pb_loading) ProgressBar loadingProgressBar;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -53,5 +56,15 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
 	@Override
 	public void updateList() {
 		adapter.notifyDataSetChanged();
+	}
+
+	@Override
+	public void showLoading() {
+		loadingProgressBar.setVisibility(View.VISIBLE);
+	}
+
+	@Override
+	public void hideLoading() {
+		loadingProgressBar.setVisibility(View.GONE);
 	}
 }

@@ -58,7 +58,12 @@ public class MainPresenter extends MvpPresenter<MainView>{
 					Timber.d("result in " + Thread.currentThread().getName());
 					this.listPresenter.photos.addAll(photo.getHits());
 					getViewState().updateList();
-				}, throwable -> Timber.e(throwable));
+					getViewState().hideLoading();
+				}, throwable -> {
+					Timber.e(throwable);
+					getViewState().hideLoading();
+
+				});
 	}
 
 	public ListPresenter getListPresenter(){

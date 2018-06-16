@@ -8,4 +8,6 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 public interface MainView extends MvpView{
 	void init();
 	void updateList();
+	void showLoading();
+	void hideLoading();
 }

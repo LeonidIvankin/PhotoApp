@@ -21,7 +21,7 @@ public class ImageCache {
 	//сохраняем картинку
 	public File save(String url, Bitmap bitmap) {
 
-		//если папка существует(!) или не получилось создать, выбрасываем ошибку
+		//если папка существует или не получилось создать, выбрасываем ошибку
 		if (!getImageDir().exists() && !getImageDir().mkdirs()){
 			throw new RuntimeException(Constant.FAILED_TO_CREATE_DIRECTORY + getImageDir().toString());
 		}
