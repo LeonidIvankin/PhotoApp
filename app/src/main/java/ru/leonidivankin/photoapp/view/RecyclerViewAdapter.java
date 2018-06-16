@@ -1,4 +1,4 @@
-package ru.leonidivankin.photovkapp.view;
+package ru.leonidivankin.photoapp.view;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -8,18 +8,24 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import ru.leonidivankin.photovkapp.R;
-import ru.leonidivankin.photovkapp.model.image.IImageLoader;
-import ru.leonidivankin.photovkapp.model.image.android.GlideImageLoader;
+import ru.leonidivankin.photoapp.R;
+import ru.leonidivankin.photoapp.app.App;
+import ru.leonidivankin.photoapp.model.image.IImageLoader;
+import ru.leonidivankin.photoapp.model.image.android.GlideImageLoader;
 
-class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.RecyclerViewHolder>{
+public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.RecyclerViewHolder>{
 
 	IListPresenter presenter;
+	@Inject
+	IImageLoader<ImageView> imageLoader;
 
 	public RecyclerViewAdapter(IListPresenter presenter) {
 		this.presenter = presenter;
+		App.getInstance().getAppComponent().inject(this);
 	}
 
 	@NonNull
@@ -43,13 +49,13 @@ class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.Recyc
 		@BindView(R.id.text_view_item_tag) TextView textViewItemTag;
 		@BindView(R.id.image_view_item_recycler_view) ImageView imageViewItemRecyclerView;
 		int pos = 0;
-		IImageLoader<ImageView> imageLoader;
+
 
 
 		public RecyclerViewHolder(View itemView) {
 			super(itemView);
 			ButterKnife.bind(this, itemView);
-			imageLoader = new GlideImageLoader();
+
 		}
 
 		@Override

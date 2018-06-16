@@ -1,4 +1,4 @@
-package ru.leonidivankin.photovkapp.model.image.android;
+package ru.leonidivankin.photoapp.model.image.android;
 
 import android.graphics.Bitmap;
 import android.support.annotation.Nullable;
@@ -10,19 +10,22 @@ import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 
-import ru.leonidivankin.photovkapp.app.NetworkStatus;
-import ru.leonidivankin.photovkapp.model.cache.ImageCache;
-import ru.leonidivankin.photovkapp.model.image.IImageLoader;
+import ru.leonidivankin.photoapp.app.NetworkStatus;
+import ru.leonidivankin.photoapp.di.modules.ImageCacheModule;
+import ru.leonidivankin.photoapp.model.cache.ImageCache;
+import ru.leonidivankin.photoapp.model.image.IImageLoader;
 import timber.log.Timber;
 
 public class GlideImageLoader implements IImageLoader<ImageView> {
+
+	private ImageCache imageCache;
+
+	public GlideImageLoader(ImageCache imageCache) {
+		this.imageCache = imageCache;
+	}
+
 	@Override
 	public void loadInto(String url, ImageView container) {
-		//simple glide
-		/*Glide
-				.with(container.getContext())
-				.load(url)
-				.into(container);*/
 
 		//если онлайн, берем картинки по url
 		if(NetworkStatus.isOnline()){
@@ -40,17 +43,17 @@ public class GlideImageLoader implements IImageLoader<ImageView> {
 						@Override
 						public boolean onResourceReady(Bitmap resource, Object model, Target<Bitmap> target, DataSource dataSource, boolean isFirstResource) {
 							//сохраняем все картинку
-							ImageCache.save(url, resource);
+							imageCache.save(url, resource);
 
 							return false;
 						}
 					}).into(container);
 			//если офлайн, берем картинки из кеша
 		} else{
-			if(ImageCache.contains(url)){
+			if(imageCache.contains(url)){
 				GlideApp
 						.with(container.getContext())
-						.load(ImageCache.getFile(url))
+						.load(imageCache.getFile(url))
 						.into(container);
 
 			}

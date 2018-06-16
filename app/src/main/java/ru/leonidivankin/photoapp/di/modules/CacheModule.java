@@ -1,9 +1,9 @@
-package ru.leonidivankin.photovkapp.di.modules;
+package ru.leonidivankin.photoapp.di.modules;
 
 import dagger.Module;
 import dagger.Provides;
-import ru.leonidivankin.photovkapp.model.cache.ICache;
-import ru.leonidivankin.photovkapp.model.cache.RealmCache;
+import ru.leonidivankin.photoapp.model.cache.ICache;
+import ru.leonidivankin.photoapp.model.cache.RealmCache;
 
 @Module
 public class CacheModule {

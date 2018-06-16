@@ -1,4 +1,4 @@
-package ru.leonidivankin.photovkapp;
+package ru.leonidivankin.photoapp;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

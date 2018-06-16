@@ -1,4 +1,4 @@
-package ru.leonidivankin.photovkapp.model.cache;
+package ru.leonidivankin.photoapp.model.cache;
 
 import android.graphics.Bitmap;
 
@@ -9,8 +9,8 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 import io.realm.Realm;
-import ru.leonidivankin.photovkapp.app.App;
-import ru.leonidivankin.photovkapp.model.entity.realm.CachedImage;
+import ru.leonidivankin.photoapp.app.App;
+import ru.leonidivankin.photoapp.model.entity.realm.CachedImage;
 import timber.log.Timber;
 
 public class ImageCache {

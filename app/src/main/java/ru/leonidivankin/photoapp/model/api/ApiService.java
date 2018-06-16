@@ -1,9 +1,9 @@
-package ru.leonidivankin.photovkapp.model.api;
+package ru.leonidivankin.photoapp.model.api;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
-import ru.leonidivankin.photovkapp.model.entity.Photos;
+import ru.leonidivankin.photoapp.model.entity.Photos;
 
 public interface ApiService {
 

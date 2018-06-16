@@ -1,10 +1,10 @@
-package ru.leonidivankin.photovkapp.di.modules;
+package ru.leonidivankin.photoapp.di.modules;
 
 import dagger.Module;
 import dagger.Provides;
-import ru.leonidivankin.photovkapp.model.api.ApiService;
-import ru.leonidivankin.photovkapp.model.cache.ICache;
-import ru.leonidivankin.photovkapp.model.repo.PhotosRepo;
+import ru.leonidivankin.photoapp.model.api.ApiService;
+import ru.leonidivankin.photoapp.model.cache.ICache;
+import ru.leonidivankin.photoapp.model.repo.PhotosRepo;
 
 @Module(includes = {ApiModule.class, CacheModule.class})
 public class RepoModule {

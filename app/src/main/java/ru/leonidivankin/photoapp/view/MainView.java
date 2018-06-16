@@ -1,4 +1,4 @@
-package ru.leonidivankin.photovkapp.view;
+package ru.leonidivankin.photoapp.view;
 
 import com.arellomobile.mvp.MvpView;
 import com.arellomobile.mvp.viewstate.strategy.AddToEndSingleStrategy;

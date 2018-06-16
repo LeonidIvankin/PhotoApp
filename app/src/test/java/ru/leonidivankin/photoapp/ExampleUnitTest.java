@@ -1,4 +1,4 @@
-package ru.leonidivankin.photovkapp;
+package ru.leonidivankin.photoapp;
 
 import org.junit.Test;
 

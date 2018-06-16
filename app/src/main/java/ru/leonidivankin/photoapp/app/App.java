@@ -1,11 +1,11 @@
-package ru.leonidivankin.photovkapp.app;
+package ru.leonidivankin.photoapp.app;
 
 import android.app.Application;
 
 import io.realm.Realm;
-import ru.leonidivankin.photovkapp.di.AppComponent;
-import ru.leonidivankin.photovkapp.di.DaggerAppComponent;
-import ru.leonidivankin.photovkapp.di.modules.AppModule;
+import ru.leonidivankin.photoapp.di.AppComponent;
+import ru.leonidivankin.photoapp.di.DaggerAppComponent;
+import ru.leonidivankin.photoapp.di.modules.AppModule;
 import timber.log.Timber;
 
 public class App extends Application {

@@ -1,4 +1,4 @@
-package ru.leonidivankin.photovkapp.presenter;
+package ru.leonidivankin.photoapp.presenter;
 
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
@@ -11,11 +11,11 @@ import javax.inject.Inject;
 
 import io.reactivex.Scheduler;
 import io.reactivex.disposables.Disposable;
-import ru.leonidivankin.photovkapp.model.entity.Hits;
-import ru.leonidivankin.photovkapp.model.repo.PhotosRepo;
-import ru.leonidivankin.photovkapp.view.IListPresenter;
-import ru.leonidivankin.photovkapp.view.ListPhotosView;
-import ru.leonidivankin.photovkapp.view.MainView;
+import ru.leonidivankin.photoapp.model.entity.Hits;
+import ru.leonidivankin.photoapp.model.repo.PhotosRepo;
+import ru.leonidivankin.photoapp.view.IListPresenter;
+import ru.leonidivankin.photoapp.view.ListPhotosView;
+import ru.leonidivankin.photoapp.view.MainView;
 import timber.log.Timber;
 
 @InjectViewState

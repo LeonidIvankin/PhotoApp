@@ -1,14 +1,14 @@
-package ru.leonidivankin.photovkapp.model.cache;
+package ru.leonidivankin.photoapp.model.cache;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.Observable;
 import io.realm.Realm;
-import ru.leonidivankin.photovkapp.model.entity.Hits;
-import ru.leonidivankin.photovkapp.model.entity.Photos;
-import ru.leonidivankin.photovkapp.model.entity.realm.RealmHits;
-import ru.leonidivankin.photovkapp.model.entity.realm.RealmPhotos;
+import ru.leonidivankin.photoapp.model.entity.Hits;
+import ru.leonidivankin.photoapp.model.entity.Photos;
+import ru.leonidivankin.photoapp.model.entity.realm.RealmHits;
+import ru.leonidivankin.photoapp.model.entity.realm.RealmPhotos;
 import timber.log.Timber;
 
 public class RealmCache implements ICache {

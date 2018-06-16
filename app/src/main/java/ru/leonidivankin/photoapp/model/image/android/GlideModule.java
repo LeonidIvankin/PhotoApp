@@ -1,4 +1,4 @@
-package ru.leonidivankin.photovkapp.model.image.android;
+package ru.leonidivankin.photoapp.model.image.android;
 
 import com.bumptech.glide.module.AppGlideModule;
 

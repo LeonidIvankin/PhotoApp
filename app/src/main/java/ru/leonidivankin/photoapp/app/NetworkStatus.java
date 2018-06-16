@@ -1,4 +1,4 @@
-package ru.leonidivankin.photovkapp.app;
+package ru.leonidivankin.photoapp.app;
 
 import android.content.Context;
 import android.net.ConnectivityManager;

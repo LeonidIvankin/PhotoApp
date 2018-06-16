@@ -1,11 +1,11 @@
-package ru.leonidivankin.photovkapp.model.repo;
+package ru.leonidivankin.photoapp.model.repo;
 
 import io.reactivex.Observable;
 import io.reactivex.schedulers.Schedulers;
-import ru.leonidivankin.photovkapp.app.NetworkStatus;
-import ru.leonidivankin.photovkapp.model.api.ApiService;
-import ru.leonidivankin.photovkapp.model.cache.ICache;
-import ru.leonidivankin.photovkapp.model.entity.Photos;
+import ru.leonidivankin.photoapp.app.NetworkStatus;
+import ru.leonidivankin.photoapp.model.api.ApiService;
+import ru.leonidivankin.photoapp.model.cache.ICache;
+import ru.leonidivankin.photoapp.model.entity.Photos;
 
 public class PhotosRepo {
 

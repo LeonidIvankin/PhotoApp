@@ -1,8 +1,8 @@
-package ru.leonidivankin.photovkapp.di.modules;
+package ru.leonidivankin.photoapp.di.modules;
 
 import dagger.Module;
 import dagger.Provides;
-import ru.leonidivankin.photovkapp.app.App;
+import ru.leonidivankin.photoapp.app.App;
 
 @Module
 public class AppModule {

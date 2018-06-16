@@ -1,4 +1,4 @@
-package ru.leonidivankin.photovkapp.view;
+package ru.leonidivankin.photoapp.view;
 
 public interface ListPhotosView {
 	void setPreviewUrl(String text);

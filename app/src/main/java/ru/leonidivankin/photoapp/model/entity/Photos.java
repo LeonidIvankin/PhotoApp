@@ -1,4 +1,4 @@
-package ru.leonidivankin.photovkapp.model.entity;
+package ru.leonidivankin.photoapp.model.entity;
 
 import java.util.List;
 

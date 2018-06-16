@@ -1,4 +1,4 @@
-package ru.leonidivankin.photovkapp.view;
+package ru.leonidivankin.photoapp.view;
 
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -13,9 +13,9 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import ru.leonidivankin.photovkapp.R;
-import ru.leonidivankin.photovkapp.app.App;
-import ru.leonidivankin.photovkapp.presenter.MainPresenter;
+import ru.leonidivankin.photoapp.R;
+import ru.leonidivankin.photoapp.app.App;
+import ru.leonidivankin.photoapp.presenter.MainPresenter;
 
 public class MainActivity extends MvpAppCompatActivity implements MainView {
 

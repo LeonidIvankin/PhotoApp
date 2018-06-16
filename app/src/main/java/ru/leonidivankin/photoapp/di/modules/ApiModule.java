@@ -1,4 +1,4 @@
-package ru.leonidivankin.photovkapp.di.modules;
+package ru.leonidivankin.photoapp.di.modules;
 
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
@@ -13,7 +13,7 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
-import ru.leonidivankin.photovkapp.model.api.ApiService;
+import ru.leonidivankin.photoapp.model.api.ApiService;
 
 @Module
 public class ApiModule {

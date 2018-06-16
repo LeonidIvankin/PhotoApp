@@ -1,4 +1,4 @@
-package ru.leonidivankin.photovkapp.model.entity.realm;
+package ru.leonidivankin.photoapp.model.entity.realm;
 
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
