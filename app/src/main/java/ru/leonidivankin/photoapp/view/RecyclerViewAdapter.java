@@ -19,7 +19,7 @@ import ru.leonidivankin.photoapp.model.image.android.GlideImageLoader;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.RecyclerViewHolder>{
 
-	IListPresenter presenter;
+	private IListPresenter presenter;
 	@Inject
 	IImageLoader<ImageView> imageLoader;
 

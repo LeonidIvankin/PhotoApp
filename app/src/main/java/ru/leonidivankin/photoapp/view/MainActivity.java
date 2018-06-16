@@ -21,7 +21,7 @@ import ru.leonidivankin.photoapp.presenter.MainPresenter;
 
 public class MainActivity extends MvpAppCompatActivity implements MainView {
 
-	RecyclerViewAdapter adapter;
+	private RecyclerViewAdapter adapter;
 
 	@InjectPresenter MainPresenter presenter;
 	@Inject App app;

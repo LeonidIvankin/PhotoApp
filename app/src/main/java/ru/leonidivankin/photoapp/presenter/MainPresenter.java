@@ -30,7 +30,7 @@ public class MainPresenter extends MvpPresenter<MainView>{
 
 	private class ListPresenter implements IListPresenter {
 
-		List<Hits> photos = new ArrayList();
+		private List<Hits> photos = new ArrayList();
 
 		//сетим url и tag для каждой картинки
 		@Override

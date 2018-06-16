@@ -6,8 +6,8 @@ import io.realm.annotations.PrimaryKey;
 public class RealmHits extends RealmObject {
 
 	@PrimaryKey
-	String previewURL;
-	String tags;
+	private String previewURL;
+	private String tags;
 
 	public String getTags() {
 		return tags;
