@@ -15,11 +15,11 @@ import timber.log.Timber;
 
 public class ImageCache {
 
-	private static final String IMAGE_FOLDER_NAME = "image";
-	private static File imageDir;
+	private final String IMAGE_FOLDER_NAME = "image";
+	private File imageDir;
 
 	//сохраняем картинку
-	public static File save(String url, Bitmap bitmap) {
+	public File save(String url, Bitmap bitmap) {
 
 		//если папка существует(!) или не получилось создать, выбрасываем ошибку
 		if (!getImageDir().exists() && !getImageDir().mkdirs()){
@@ -52,7 +52,7 @@ public class ImageCache {
 	}
 
 	//возращаем вместо url hash
-	private static String md5(String s) {
+	private String md5(String s) {
 		MessageDigest m = null;
 
 		try {
@@ -67,7 +67,7 @@ public class ImageCache {
 	}
 
 	//получаем путь к файлу по url из Realm
-	public static File getFile(String url) {
+	public File getFile(String url) {
 		CachedImage cachedImage = Realm
 				.getDefaultInstance()
 				.where(CachedImage.class)
@@ -83,7 +83,7 @@ public class ImageCache {
 	}
 
 	//проверяем, есть ли данный путь в Realm
-	public static boolean contains(String url) {
+	public boolean contains(String url) {
 		return Realm
 				.getDefaultInstance()
 				.where(CachedImage.class)
@@ -93,7 +93,7 @@ public class ImageCache {
 	}
 
 	//получаем путь к папке для сохранения фото
-	public static File getImageDir() {
+	public File getImageDir() {
 		return new File(App.getInstance().getExternalFilesDir(null) + "/" + IMAGE_FOLDER_NAME);
 	}
 }
