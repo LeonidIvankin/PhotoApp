@@ -24,13 +24,19 @@ public class ApiModule {
 		return retrofit.create(ApiService.class);
 	}
 
+
 	@Provides
-	public Retrofit retrofit(OkHttpClient client, GsonConverterFactory gsonConverterFactory,
+	public String baseUrl() {
+		return "https://api.github.com/";
+	}
+
+	@Provides
+	public Retrofit retrofit(OkHttpClient client, String baseUrl, GsonConverterFactory gsonConverterFactory,
 							 RxJava2CallAdapterFactory rxJava2CallAdapterFactory){
 
 		//https://pixabay.com/api/?key=9250926-552b631cddef606bad3e807d2
 		return new Retrofit.Builder()
-				.baseUrl("http://pixabay.com")
+				.baseUrl(baseUrl)
 				.client(client)
 				.addCallAdapterFactory(rxJava2CallAdapterFactory)
 				.addConverterFactory(gsonConverterFactory)
