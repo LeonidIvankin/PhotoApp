@@ -25,6 +25,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
 	public RecyclerViewAdapter(IListPresenter presenter) {
 		this.presenter = presenter;
+		//inject для Dagger
 		App.getInstance().getAppComponent().inject(this);
 	}
 
@@ -50,19 +51,18 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 		@BindView(R.id.image_view_item_recycler_view) ImageView imageViewItemRecyclerView;
 		int pos = 0;
 
-
-
 		public RecyclerViewHolder(View itemView) {
 			super(itemView);
 			ButterKnife.bind(this, itemView);
-
 		}
 
+		//загружаем фото
 		@Override
 		public void setPreviewUrl(String previewUrl) {
 			imageLoader.loadInto(previewUrl, imageViewItemRecyclerView);
 		}
 
+		//показываем теги
 		@Override
 		public void setTags(String tag) {
 			textViewItemTag.setText(tag);

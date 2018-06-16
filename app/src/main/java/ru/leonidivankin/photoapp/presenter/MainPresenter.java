@@ -32,6 +32,7 @@ public class MainPresenter extends MvpPresenter<MainView>{
 
 		List<Hits> photos = new ArrayList();
 
+		//сетим url и tag для каждой картинки
 		@Override
 		public void bindView(ListPhotosView holder) {
 			holder.setPreviewUrl(photos.get(holder.getPos()).getPreviewURL());
@@ -47,7 +48,7 @@ public class MainPresenter extends MvpPresenter<MainView>{
 	@Override
 	protected void onFirstViewAttach() {
 		super.onFirstViewAttach();
-		getViewState().init();
+		getViewState().initRecyclerView();
 		loadPhotos();
 	}
 
@@ -55,9 +56,11 @@ public class MainPresenter extends MvpPresenter<MainView>{
 		Disposable disposable = photosRepo.getPhoto()
 				.observeOn(mainThreadScheduler)
 				.subscribe(photo -> {
+					//возвращаем объект с распарсеным json
 					Timber.d("result in " + Thread.currentThread().getName());
+					//передаём все url
 					this.listPresenter.photos.addAll(photo.getHits());
-					getViewState().updateList();
+					getViewState().updateRecyclerView();
 					getViewState().hideLoading();
 				}, throwable -> {
 					Timber.e(throwable);

@@ -10,8 +10,8 @@ import ru.leonidivankin.photoapp.model.entity.Photos;
 
 public class PhotosRepo {
 
-	ICache cache;
-	ApiService api;
+	private ICache cache;
+	private ApiService api;
 
 	public PhotosRepo (ICache cache, ApiService api){
 		this.cache = cache;
@@ -20,15 +20,17 @@ public class PhotosRepo {
 
 	public Observable<Photos> getPhoto(){
 		if(NetworkStatus.isOnline()){
-
+			//если онлайн, получаем из сети
 			return api
 					.getPhotos(Constant.TOKEN_KEY)
 					.subscribeOn(Schedulers.io())
 					.map(photos -> {
+						//записываем в кеш
 						cache.putPhoto(photos);
 						return photos;
 					});
 		} else{
+			//если офлайн, из кеша
 			return cache.getPhoto();
 		}
 

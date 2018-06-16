@@ -35,6 +35,7 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
 		setContentView(R.layout.activity_main);
 
 		ButterKnife.bind(this);
+		//inject для Dagger
 		App.getInstance().getAppComponent().inject(this);
 	}
 
@@ -47,14 +48,14 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
 	}
 
 	@Override
-	public void init() {
+	public void initRecyclerView() {
 		recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
 		adapter = new RecyclerViewAdapter(presenter.getListPresenter());
 		recyclerView.setAdapter(adapter);
 	}
 
 	@Override
-	public void updateList() {
+	public void updateRecyclerView() {
 		adapter.notifyDataSetChanged();
 	}
 
