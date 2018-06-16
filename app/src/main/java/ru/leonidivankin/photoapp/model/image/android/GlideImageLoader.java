@@ -4,14 +4,13 @@ import android.graphics.Bitmap;
 import android.support.annotation.Nullable;
 import android.widget.ImageView;
 
-import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DataSource;
 import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 
+import ru.leonidivankin.photoapp.R;
 import ru.leonidivankin.photoapp.app.NetworkStatus;
-import ru.leonidivankin.photoapp.di.modules.ImageCacheModule;
 import ru.leonidivankin.photoapp.model.cache.ImageCache;
 import ru.leonidivankin.photoapp.model.image.IImageLoader;
 import timber.log.Timber;
@@ -28,7 +27,7 @@ public class GlideImageLoader implements IImageLoader<ImageView> {
 	public void loadInto(String url, ImageView container) {
 
 		//если онлайн, берем картинки по url
-		if(NetworkStatus.isOnline()){
+		if (NetworkStatus.isOnline() && !imageCache.contains(url)) {
 
 			GlideApp
 					.with(container.getContext())
@@ -47,10 +46,12 @@ public class GlideImageLoader implements IImageLoader<ImageView> {
 
 							return false;
 						}
-					}).into(container);
+					})
+					.placeholder(R.drawable.ic_cloud_download_black_48dp)
+					.into(container);
 			//если офлайн, берем картинки из кеша
-		} else{
-			if(imageCache.contains(url)){
+		} else {
+			if (imageCache.contains(url)) {
 				GlideApp
 						.with(container.getContext())
 						.load(imageCache.getFile(url))
