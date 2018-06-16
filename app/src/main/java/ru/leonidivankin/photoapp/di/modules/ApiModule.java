@@ -13,6 +13,7 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
+import ru.leonidivankin.photoapp.app.Constant;
 import ru.leonidivankin.photoapp.model.api.ApiService;
 
 @Module
@@ -27,14 +28,13 @@ public class ApiModule {
 
 	@Provides
 	public String baseUrl() {
-		return "https://api.github.com/";
+		return Constant.BASE_URL;
 	}
 
 	@Provides
 	public Retrofit retrofit(OkHttpClient client, String baseUrl, GsonConverterFactory gsonConverterFactory,
 							 RxJava2CallAdapterFactory rxJava2CallAdapterFactory){
 
-		//https://pixabay.com/api/?key=9250926-552b631cddef606bad3e807d2
 		return new Retrofit.Builder()
 				.baseUrl(baseUrl)
 				.client(client)

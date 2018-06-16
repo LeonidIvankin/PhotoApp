@@ -2,6 +2,7 @@ package ru.leonidivankin.photoapp.model.repo;
 
 import io.reactivex.Observable;
 import io.reactivex.schedulers.Schedulers;
+import ru.leonidivankin.photoapp.app.Constant;
 import ru.leonidivankin.photoapp.app.NetworkStatus;
 import ru.leonidivankin.photoapp.model.api.ApiService;
 import ru.leonidivankin.photoapp.model.cache.ICache;
@@ -21,7 +22,7 @@ public class PhotosRepo {
 		if(NetworkStatus.isOnline()){
 
 			return api
-					.getPhotos("9250926-552b631cddef606bad3e807d2")
+					.getPhotos(Constant.TOKEN_KEY)
 					.subscribeOn(Schedulers.io())
 					.map(photos -> {
 						cache.putPhoto(photos);

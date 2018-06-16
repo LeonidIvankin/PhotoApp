@@ -10,12 +10,12 @@ import java.security.NoSuchAlgorithmException;
 
 import io.realm.Realm;
 import ru.leonidivankin.photoapp.app.App;
+import ru.leonidivankin.photoapp.app.Constant;
 import ru.leonidivankin.photoapp.model.entity.realm.CachedImage;
 import timber.log.Timber;
 
 public class ImageCache {
 
-	private final String IMAGE_FOLDER_NAME = "image";
 	private File imageDir;
 
 	//сохраняем картинку
@@ -23,7 +23,7 @@ public class ImageCache {
 
 		//если папка существует(!) или не получилось создать, выбрасываем ошибку
 		if (!getImageDir().exists() && !getImageDir().mkdirs()){
-			throw new RuntimeException("Failed to create directory: " + getImageDir().toString());
+			throw new RuntimeException(Constant.FAILED_TO_CREATE_DIRECTORY + getImageDir().toString());
 		}
 
 		final String fileFormat = url.contains(".jpg") ? ".jpg" : ".png";
@@ -35,7 +35,7 @@ public class ImageCache {
 			bitmap.compress(fileFormat.equals("jpg") ? Bitmap.CompressFormat.JPEG : Bitmap.CompressFormat.PNG, 100, fos);
 			fos.close();
 		}catch(Exception e){
-			Timber.d("Failed to save image");
+			Timber.d(Constant.FAILED_TO_SAVE_IMAGE);
 			return null;
 		}
 
@@ -94,6 +94,6 @@ public class ImageCache {
 
 	//получаем путь к папке для сохранения фото
 	public File getImageDir() {
-		return new File(App.getInstance().getExternalFilesDir(null) + "/" + IMAGE_FOLDER_NAME);
+		return new File(App.getInstance().getExternalFilesDir(null) + "/" + Constant.IMAGE_FOLDER_NAME_PREVIEW_URL);
 	}
 }

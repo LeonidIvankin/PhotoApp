@@ -5,6 +5,7 @@ import java.util.List;
 
 import io.reactivex.Observable;
 import io.realm.Realm;
+import ru.leonidivankin.photoapp.app.Constant;
 import ru.leonidivankin.photoapp.model.entity.Hits;
 import ru.leonidivankin.photoapp.model.entity.Photos;
 import ru.leonidivankin.photoapp.model.entity.realm.RealmHits;
@@ -68,7 +69,7 @@ public class RealmCache implements ICache {
 
 			//если книги не существует, выдаём ошибку
 			if (realm == null) {
-				Timber.d("error getting photos from realm");
+				Timber.d(Constant.ERROR_GETTING_PHOTOS_FROM_REALM);
 			} else {
 
 				//в противном случае записываем из realm в объект photos данные

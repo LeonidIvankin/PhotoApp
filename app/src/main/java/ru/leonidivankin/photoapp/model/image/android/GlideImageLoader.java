@@ -10,6 +10,7 @@ import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 
 import ru.leonidivankin.photoapp.R;
+import ru.leonidivankin.photoapp.app.Constant;
 import ru.leonidivankin.photoapp.app.NetworkStatus;
 import ru.leonidivankin.photoapp.model.cache.ImageCache;
 import ru.leonidivankin.photoapp.model.image.IImageLoader;
@@ -35,7 +36,7 @@ public class GlideImageLoader implements IImageLoader<ImageView> {
 					.listener(new RequestListener<Bitmap>() {
 						@Override
 						public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Bitmap> target, boolean isFirstResource) {
-							Timber.e(e, "Image load failed");
+							Timber.e(e, Constant.IMAGE_LOAD_FAILED);
 							return false;
 						}
 
