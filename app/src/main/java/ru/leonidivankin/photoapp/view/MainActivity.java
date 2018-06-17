@@ -74,8 +74,6 @@ public class MainActivity extends MvpAppCompatActivity implements MainView{
 
 	@Override
 	public void showPhoto(int position) {
-		Toast.makeText(app, "click" + position, Toast.LENGTH_SHORT).show();
-
 		Intent intent = new Intent(this, PhotoActivity.class);
 		intent.putExtra("pos", position + "");
 		startActivity(intent);
