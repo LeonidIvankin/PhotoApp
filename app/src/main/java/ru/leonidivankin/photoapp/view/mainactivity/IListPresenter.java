@@ -1,4 +1,4 @@
-package ru.leonidivankin.photoapp.view;
+package ru.leonidivankin.photoapp.view.mainactivity;
 
 public interface IListPresenter {
 	void bindView(ListPhotosView holder);

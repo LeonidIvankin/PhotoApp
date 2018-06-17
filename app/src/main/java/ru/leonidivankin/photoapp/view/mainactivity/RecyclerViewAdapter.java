@@ -1,4 +1,4 @@
-package ru.leonidivankin.photoapp.view;
+package ru.leonidivankin.photoapp.view.mainactivity;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;

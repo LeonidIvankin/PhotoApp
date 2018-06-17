@@ -1,13 +1,11 @@
-package ru.leonidivankin.photoapp.view;
+package ru.leonidivankin.photoapp.view.mainactivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.mvp.presenter.InjectPresenter;
@@ -20,9 +18,12 @@ import butterknife.ButterKnife;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import ru.leonidivankin.photoapp.R;
 import ru.leonidivankin.photoapp.app.App;
+import ru.leonidivankin.photoapp.app.Constant;
 import ru.leonidivankin.photoapp.presenter.MainPresenter;
+import ru.leonidivankin.photoapp.view.photoactivity.PhotoActivity;
 
 public class MainActivity extends MvpAppCompatActivity implements MainView{
+
 
 	private RecyclerViewAdapter adapter;
 
@@ -73,9 +74,9 @@ public class MainActivity extends MvpAppCompatActivity implements MainView{
 	}
 
 	@Override
-	public void showPhoto(int position) {
+	public void showPhoto(String webformatURL) {
 		Intent intent = new Intent(this, PhotoActivity.class);
-		intent.putExtra("pos", position + "");
+		intent.putExtra(Constant.SEND_INTENT_FROM_MAINACTIVITY_TO_PHOTOACTIVITY, webformatURL);
 		startActivity(intent);
 
 	}

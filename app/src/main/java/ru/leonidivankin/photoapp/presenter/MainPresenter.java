@@ -13,9 +13,9 @@ import io.reactivex.Scheduler;
 import io.reactivex.disposables.Disposable;
 import ru.leonidivankin.photoapp.model.entity.Hits;
 import ru.leonidivankin.photoapp.model.repo.PhotosRepo;
-import ru.leonidivankin.photoapp.view.IListPresenter;
-import ru.leonidivankin.photoapp.view.ListPhotosView;
-import ru.leonidivankin.photoapp.view.MainView;
+import ru.leonidivankin.photoapp.view.mainactivity.IListPresenter;
+import ru.leonidivankin.photoapp.view.mainactivity.ListPhotosView;
+import ru.leonidivankin.photoapp.view.mainactivity.MainView;
 import timber.log.Timber;
 
 @InjectViewState
@@ -48,7 +48,7 @@ public class MainPresenter extends MvpPresenter<MainView>{
 
 		@Override
 		public void onClick(int position) {
-			getViewState().showPhoto(position);
+			getViewState().showPhoto(photos.get(position).getWebformatURL());
 		}
 	}
 

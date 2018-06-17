@@ -1,4 +1,4 @@
-package ru.leonidivankin.photoapp.view;
+package ru.leonidivankin.photoapp.view.mainactivity;
 
 import com.arellomobile.mvp.MvpView;
 import com.arellomobile.mvp.viewstate.strategy.AddToEndSingleStrategy;
@@ -10,5 +10,5 @@ public interface MainView extends MvpView{
 	void updateRecyclerView();
 	void showLoading();
 	void hideLoading();
-	void showPhoto(int position);
+	void showPhoto(String webformatURL);
 }

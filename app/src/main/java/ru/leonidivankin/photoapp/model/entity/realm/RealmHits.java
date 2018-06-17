@@ -7,7 +7,16 @@ public class RealmHits extends RealmObject {
 
 	@PrimaryKey
 	private String previewURL;
+	private String webformatURL;
 	private String tags;
+
+	public void setWebformatURL(String webformatURL) {
+		this.webformatURL = webformatURL;
+	}
+
+	public String getWebformatURL() {
+		return webformatURL;
+	}
 
 	public String getTags() {
 		return tags;

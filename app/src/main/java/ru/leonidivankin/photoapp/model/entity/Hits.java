@@ -1,8 +1,18 @@
 package ru.leonidivankin.photoapp.model.entity;
 
 public class Hits{
-	private String previewURL;
+	private String webformatURL;
 	private String tags;
+	private String previewURL;
+
+
+	public String getWebformatURL() {
+		return webformatURL;
+	}
+
+	public void setWebformatURL(String webformatURL) {
+		this.webformatURL = webformatURL;
+	}
 
 	public String getTags() {
 		return tags;

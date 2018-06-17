@@ -7,9 +7,9 @@ import ru.leonidivankin.photoapp.di.modules.AppModule;
 import ru.leonidivankin.photoapp.di.modules.ImageLoaderModule;
 import ru.leonidivankin.photoapp.di.modules.RepoModule;
 import ru.leonidivankin.photoapp.presenter.MainPresenter;
-import ru.leonidivankin.photoapp.view.MainActivity;
-import ru.leonidivankin.photoapp.view.PhotoActivity;
-import ru.leonidivankin.photoapp.view.RecyclerViewAdapter;
+import ru.leonidivankin.photoapp.view.mainactivity.MainActivity;
+import ru.leonidivankin.photoapp.view.photoactivity.PhotoActivity;
+import ru.leonidivankin.photoapp.view.mainactivity.RecyclerViewAdapter;
 
 @Singleton
 @Component(modules = {AppModule.class, RepoModule.class, ImageLoaderModule.class})
