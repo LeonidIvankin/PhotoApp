@@ -5,6 +5,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.mvp.presenter.InjectPresenter;
@@ -19,7 +20,7 @@ import ru.leonidivankin.photoapp.R;
 import ru.leonidivankin.photoapp.app.App;
 import ru.leonidivankin.photoapp.presenter.MainPresenter;
 
-public class MainActivity extends MvpAppCompatActivity implements MainView {
+public class MainActivity extends MvpAppCompatActivity implements MainView{
 
 	private RecyclerViewAdapter adapter;
 
@@ -68,4 +69,11 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
 	public void hideLoading() {
 		loadingProgressBar.setVisibility(View.GONE);
 	}
+
+	@Override
+	public void showPhoto(int position ) {
+		Toast.makeText(app, "click" + position, Toast.LENGTH_SHORT).show();
+	}
+
+
 }

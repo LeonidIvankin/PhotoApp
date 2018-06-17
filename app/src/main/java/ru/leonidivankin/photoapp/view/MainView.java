@@ -10,4 +10,5 @@ public interface MainView extends MvpView{
 	void updateRecyclerView();
 	void showLoading();
 	void hideLoading();
+	void showPhoto(int position);
 }

@@ -39,9 +39,16 @@ public class MainPresenter extends MvpPresenter<MainView>{
 			holder.setTags(photos.get(holder.getPos()).getTags());
 		}
 
+
+
 		@Override
 		public int getPhotosCount() {
 			return photos.size();
+		}
+
+		@Override
+		public void onClick(int position) {
+			getViewState().showPhoto(position);
 		}
 	}
 

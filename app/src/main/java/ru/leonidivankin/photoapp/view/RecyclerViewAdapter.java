@@ -15,9 +15,8 @@ import butterknife.ButterKnife;
 import ru.leonidivankin.photoapp.R;
 import ru.leonidivankin.photoapp.app.App;
 import ru.leonidivankin.photoapp.model.image.IImageLoader;
-import ru.leonidivankin.photoapp.model.image.android.GlideImageLoader;
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.RecyclerViewHolder>{
+public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.RecyclerViewHolder> {
 
 	private IListPresenter presenter;
 	@Inject
@@ -39,6 +38,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 	public void onBindViewHolder(@NonNull RecyclerViewHolder holder, int position) {
 		holder.pos = position;
 		presenter.bindView(holder);
+		holder.setListener(v ->{
+			presenter.onClick(position);
+		});
 	}
 
 	@Override
@@ -72,5 +74,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 		public int getPos() {
 			return pos;
 		}
+
+		public void setListener(View.OnClickListener listener) {
+			itemView.setOnClickListener(listener);
+		}
+
 	}
 }
