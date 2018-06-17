@@ -1,6 +1,8 @@
 package ru.leonidivankin.photoapp.view;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -71,8 +73,13 @@ public class MainActivity extends MvpAppCompatActivity implements MainView{
 	}
 
 	@Override
-	public void showPhoto(int position ) {
+	public void showPhoto(int position) {
 		Toast.makeText(app, "click" + position, Toast.LENGTH_SHORT).show();
+
+		Intent intent = new Intent(this, PhotoActivity.class);
+		intent.putExtra("pos", position + "");
+		startActivity(intent);
+
 	}
 
 
