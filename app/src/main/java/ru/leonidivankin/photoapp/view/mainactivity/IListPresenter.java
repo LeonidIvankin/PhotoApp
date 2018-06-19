@@ -3,5 +3,5 @@ package ru.leonidivankin.photoapp.view.mainactivity;
 public interface IListPresenter {
 	void bindView(ListPhotosView holder);
 	int getPhotosCount();
-	void onClick(int position);
+	void onClickPhoto(int position);
 }

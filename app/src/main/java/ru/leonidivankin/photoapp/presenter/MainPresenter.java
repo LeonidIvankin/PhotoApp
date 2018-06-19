@@ -47,8 +47,8 @@ public class MainPresenter extends MvpPresenter<MainView>{
 		}
 
 		@Override
-		public void onClick(int position) {
-			getViewState().showPhoto(photos.get(position).getWebformatURL());
+		public void onClickPhoto(int position) {
+			getViewState().sendIntentPosition(position);
 		}
 	}
 

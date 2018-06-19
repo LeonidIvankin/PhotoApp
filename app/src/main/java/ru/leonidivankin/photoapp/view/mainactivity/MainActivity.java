@@ -74,9 +74,9 @@ public class MainActivity extends MvpAppCompatActivity implements MainView{
 	}
 
 	@Override
-	public void showPhoto(String webformatURL) {
+	public void sendIntentPosition(int position) {
 		Intent intent = new Intent(this, PhotoActivity.class);
-		intent.putExtra(Constant.SEND_INTENT_FROM_MAINACTIVITY_TO_PHOTOACTIVITY, webformatURL);
+		intent.putExtra(Constant.SEND_INTENT_FROM_MAINACTIVITY_TO_PHOTOACTIVITY, position);
 		startActivity(intent);
 
 	}

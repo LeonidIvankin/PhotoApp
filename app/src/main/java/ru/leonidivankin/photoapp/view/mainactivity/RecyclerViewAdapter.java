@@ -39,7 +39,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 		holder.pos = position;
 		presenter.bindView(holder);
 		holder.setListener(v ->{
-			presenter.onClick(position);
+			presenter.onClickPhoto(position);
 		});
 	}
 
