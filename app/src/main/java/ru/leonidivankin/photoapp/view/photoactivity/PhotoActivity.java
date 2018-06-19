@@ -62,4 +62,9 @@ public class PhotoActivity extends MvpAppCompatActivity implements PhotoView{
 	public void showPhoto(String previewURL) {
 		imageLoader.loadInto(previewURL, imageViewPhotoActivity);
 	}
+
+	@Override
+	public void showTag(String tag) {
+		textViewPhotoActivity.setText(tag);
+	}
 }

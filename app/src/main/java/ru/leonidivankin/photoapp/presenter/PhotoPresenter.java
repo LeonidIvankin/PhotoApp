@@ -27,6 +27,7 @@ public class PhotoPresenter extends MvpPresenter<PhotoView>{
 				.observeOn(mainThreadScheduler)
 				.subscribe(photos -> {
 					getViewState().showPhoto(photos.getHits().get(position).getWebformatURL());
+					getViewState().showTag(photos.getHits().get(position).getTags());
 				}, throwable -> {
 					Timber.e(throwable);
 				});

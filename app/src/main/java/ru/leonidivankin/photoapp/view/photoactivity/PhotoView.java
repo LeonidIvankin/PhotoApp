@@ -8,4 +8,5 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 public interface PhotoView extends MvpView{
 
 	void showPhoto(String previewURL);
+	void showTag(String tag);
 }
