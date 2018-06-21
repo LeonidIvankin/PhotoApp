@@ -36,9 +36,9 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
 
 	@BindView(R.id.recycler_view) RecyclerView recyclerView;
 	@BindView(R.id.progress_bar_loading) ProgressBar loadingProgressBar;
-	@BindView(R.id.button_enter_request) Button buttonEnterRequest;
 	@BindView(R.id.edit_text_enter_request) EditText editTextEnterRequest;
 	@BindView(R.id.toolbar) Toolbar toolbar;
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -54,11 +54,6 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
 	}
 
 	private void initListeners() {
-		buttonEnterRequest.setOnClickListener(v -> {
-			enterRequest();
-		});
-
-
 		editTextEnterRequest.setOnKeyListener((v, keyCode, event) -> {
 			if (event.getAction() == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
 				enterRequest();

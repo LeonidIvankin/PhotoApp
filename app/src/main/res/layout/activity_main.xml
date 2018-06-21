@@ -39,15 +39,6 @@
                         android:layout_weight="20"
                         android:inputType="text" />
 
-                    <Button
-                        android:id="@+id/button_enter_request"
-                        android:padding="8dp"
-                        android:background="@color/colorAccent"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="80"
-                        android:text="Show" />
-
                 </LinearLayout>
 
             </android.support.v7.widget.Toolbar>
