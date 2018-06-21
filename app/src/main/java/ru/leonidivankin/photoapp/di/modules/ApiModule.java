@@ -21,7 +21,7 @@ public class ApiModule {
 
 	@Singleton
 	@Provides
-	public ApiService api(Retrofit retrofit){
+	public ApiService api(Retrofit retrofit) {
 		return retrofit.create(ApiService.class);
 	}
 
@@ -33,7 +33,7 @@ public class ApiModule {
 
 	@Provides
 	public Retrofit retrofit(OkHttpClient client, String baseUrl, GsonConverterFactory gsonConverterFactory,
-							 RxJava2CallAdapterFactory rxJava2CallAdapterFactory){
+							 RxJava2CallAdapterFactory rxJava2CallAdapterFactory) {
 
 		return new Retrofit.Builder()
 				.baseUrl(baseUrl)
@@ -44,32 +44,32 @@ public class ApiModule {
 	}
 
 	@Provides
-	public GsonConverterFactory gsonConverterFactory(Gson gson){
+	public GsonConverterFactory gsonConverterFactory(Gson gson) {
 		return GsonConverterFactory.create(gson);
 	}
 
 	@Provides
-	public Gson gson(){
+	public Gson gson() {
 		return new GsonBuilder()
 				.setFieldNamingPolicy(FieldNamingPolicy.IDENTITY)
 				.create();
 	}
 
 	@Provides
-	public RxJava2CallAdapterFactory rxJava2CallAdapterFactory(){
+	public RxJava2CallAdapterFactory rxJava2CallAdapterFactory() {
 		return RxJava2CallAdapterFactory.create();
 	}
 
 	//метод для вывода логов в logcat
 	@Provides
-	public HttpLoggingInterceptor loggingInterceptor(){
+	public HttpLoggingInterceptor loggingInterceptor() {
 		HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
 		interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 		return interceptor;
 	}
 
 	@Provides
-	public OkHttpClient okHttpClient(HttpLoggingInterceptor httpLoggingInterceptor){
+	public OkHttpClient okHttpClient(HttpLoggingInterceptor httpLoggingInterceptor) {
 		return new OkHttpClient.Builder()
 				.addInterceptor(httpLoggingInterceptor)
 				.build();

@@ -22,7 +22,7 @@ public class ImageCache {
 	public File save(String url, Bitmap bitmap) {
 
 		//если папка существует или не получилось создать, выбрасываем ошибку
-		if (!getImageDir().exists() && !getImageDir().mkdirs()){
+		if (!getImageDir().exists() && !getImageDir().mkdirs()) {
 			throw new RuntimeException(Constant.FAILED_TO_CREATE_DIRECTORY + getImageDir().toString());
 		}
 
@@ -31,16 +31,16 @@ public class ImageCache {
 		final File imageFile = new File(getImageDir(), md5(url) + fileFormat);
 
 		//сохраняем картинку на карту памяти
-		try(FileOutputStream fos = new FileOutputStream(imageFile)){
+		try (FileOutputStream fos = new FileOutputStream(imageFile)) {
 			bitmap.compress(fileFormat.equals("jpg") ? Bitmap.CompressFormat.JPEG : Bitmap.CompressFormat.PNG, 100, fos);
 			fos.close();
-		}catch(Exception e){
+		} catch (Exception e) {
 			Timber.d(Constant.FAILED_TO_SAVE_IMAGE);
 			return null;
 		}
 
 		//сохраняем путь и url картинки в Realm.
-		Realm.getDefaultInstance().executeTransaction(realm ->{
+		Realm.getDefaultInstance().executeTransaction(realm -> {
 			CachedImage cachedImage = new CachedImage();
 			cachedImage.setUrl(url);
 			cachedImage.setPath(imageFile.toString());
@@ -74,7 +74,7 @@ public class ImageCache {
 				.equalTo("url", url)
 				.findFirst();
 
-		if(cachedImage != null){
+		if (cachedImage != null) {
 			return new File(cachedImage.getPath());
 		}
 
@@ -98,11 +98,11 @@ public class ImageCache {
 	}
 
 	//очистка папки
-	public void clearDir(){
+	public void clearDir() {
 		File[] files = getImageDir().listFiles();
-		if(files != null){
-			for(File file : files) {
-			    file.delete();
+		if (files != null) {
+			for (File file : files) {
+				file.delete();
 			}
 		}
 	}

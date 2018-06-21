@@ -13,7 +13,7 @@ public class AppModule {
 	}
 
 	@Provides
-	public App app(){
+	public App app() {
 		return app;
 	}
 }

@@ -12,7 +12,7 @@ import ru.leonidivankin.photoapp.view.photoactivity.PhotoView;
 import timber.log.Timber;
 
 @InjectViewState
-public class PhotoPresenter extends MvpPresenter<PhotoView>{
+public class PhotoPresenter extends MvpPresenter<PhotoView> {
 	private Scheduler mainThreadScheduler;
 
 	@Inject ICache cache;

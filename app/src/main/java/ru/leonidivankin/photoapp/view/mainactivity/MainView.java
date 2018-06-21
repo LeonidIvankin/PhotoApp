@@ -5,10 +5,14 @@ import com.arellomobile.mvp.viewstate.strategy.AddToEndSingleStrategy;
 import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 
 @StateStrategyType(AddToEndSingleStrategy.class)
-public interface MainView extends MvpView{
+public interface MainView extends MvpView {
 	void initRecyclerView();
+
 	void updateRecyclerView();
+
 	void showLoading();
+
 	void hideLoading();
+
 	void sendIntentPosition(int position);
 }

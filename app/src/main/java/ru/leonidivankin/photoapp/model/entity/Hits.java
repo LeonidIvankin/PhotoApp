@@ -1,6 +1,6 @@
 package ru.leonidivankin.photoapp.model.entity;
 
-public class Hits{
+public class Hits {
 	private String webformatURL;
 	private String tags;
 	private String previewURL;

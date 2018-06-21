@@ -2,12 +2,10 @@ package ru.leonidivankin.photoapp.view.photoactivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.arellomobile.mvp.MvpAppCompatActivity;
-import com.arellomobile.mvp.MvpView;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
 
@@ -21,9 +19,8 @@ import ru.leonidivankin.photoapp.app.App;
 import ru.leonidivankin.photoapp.app.Constant;
 import ru.leonidivankin.photoapp.model.image.IImageLoader;
 import ru.leonidivankin.photoapp.presenter.PhotoPresenter;
-import timber.log.Timber;
 
-public class PhotoActivity extends MvpAppCompatActivity implements PhotoView{
+public class PhotoActivity extends MvpAppCompatActivity implements PhotoView {
 
 	@BindView(R.id.text_view_photo_activity) TextView textViewPhotoActivity;
 	@BindView(R.id.image_view_photo_activity) ImageView imageViewPhotoActivity;
@@ -34,7 +31,7 @@ public class PhotoActivity extends MvpAppCompatActivity implements PhotoView{
 	@InjectPresenter PhotoPresenter photoPresenter;
 
 	@ProvidePresenter
-	public PhotoPresenter createPresenter(){
+	public PhotoPresenter createPresenter() {
 		PhotoPresenter presenter = new PhotoPresenter(AndroidSchedulers.mainThread());
 		App.getInstance().getAppComponent().inject(presenter);
 

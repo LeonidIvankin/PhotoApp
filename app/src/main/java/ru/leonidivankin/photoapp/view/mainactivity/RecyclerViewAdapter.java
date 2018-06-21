@@ -16,8 +16,6 @@ import ru.leonidivankin.photoapp.R;
 import ru.leonidivankin.photoapp.app.App;
 import ru.leonidivankin.photoapp.model.image.IImageLoader;
 
-import static ru.leonidivankin.photoapp.app.Constant.MAX_LENGTH_TAG;
-
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.RecyclerViewHolder> {
 
 	private IListPresenter presenter;
@@ -40,7 +38,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 	public void onBindViewHolder(@NonNull RecyclerViewHolder holder, int position) {
 		holder.pos = position;
 		presenter.bindView(holder);
-		holder.setListener(v ->{
+		holder.setListener(v -> {
 			presenter.onClickPhoto(position);
 		});
 	}

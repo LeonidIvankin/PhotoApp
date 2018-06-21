@@ -3,7 +3,6 @@ package ru.leonidivankin.photoapp.presenter;
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,12 +20,12 @@ import timber.log.Timber;
 import static ru.leonidivankin.photoapp.app.Constant.MAX_LENGTH_TAG;
 
 @InjectViewState
-public class MainPresenter extends MvpPresenter<MainView>{
+public class MainPresenter extends MvpPresenter<MainView> {
 	private Scheduler mainThreadScheduler;
 	@Inject PhotosRepo photosRepo;
 	private ListPresenter listPresenter = new ListPresenter();
 
-	public MainPresenter(Scheduler mainThreadScheduler){
+	public MainPresenter(Scheduler mainThreadScheduler) {
 		this.mainThreadScheduler = mainThreadScheduler;
 	}
 
@@ -45,7 +44,7 @@ public class MainPresenter extends MvpPresenter<MainView>{
 		}
 
 		public String maxLength(String str) {
-			if(str.length() > MAX_LENGTH_TAG){
+			if (str.length() > MAX_LENGTH_TAG) {
 				return str.substring(0, MAX_LENGTH_TAG) + "...";
 			}
 			return str;
@@ -71,7 +70,7 @@ public class MainPresenter extends MvpPresenter<MainView>{
 		loadPhotos();
 	}
 
-	public void enterRequest(String request){
+	public void enterRequest(String request) {
 		loadPhotos(request);
 	}
 
@@ -98,8 +97,7 @@ public class MainPresenter extends MvpPresenter<MainView>{
 	}
 
 
-
-	public ListPresenter getListPresenter(){
+	public ListPresenter getListPresenter() {
 		return listPresenter;
 	}
 

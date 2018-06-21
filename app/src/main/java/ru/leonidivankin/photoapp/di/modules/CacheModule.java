@@ -9,7 +9,7 @@ import ru.leonidivankin.photoapp.model.cache.RealmCache;
 public class CacheModule {
 
 	@Provides
-	public ICache cache(){
+	public ICache cache() {
 		return new RealmCache();
 	}
 

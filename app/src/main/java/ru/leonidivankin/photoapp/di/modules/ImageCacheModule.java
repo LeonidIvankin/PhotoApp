@@ -8,7 +8,7 @@ import ru.leonidivankin.photoapp.model.cache.ImageCache;
 public class ImageCacheModule {
 
 	@Provides
-	ImageCache provideImageCache(){
+	ImageCache provideImageCache() {
 		return new ImageCache();
 	}
 }

@@ -13,13 +13,13 @@ public class PhotosRepo {
 	private ICache cache;
 	private ApiService api;
 
-	public PhotosRepo (ICache cache, ApiService api){
+	public PhotosRepo(ICache cache, ApiService api) {
 		this.cache = cache;
 		this.api = api;
 	}
 
-	public Observable<Photos> getPhoto(String request){
-		if(NetworkStatus.isOnline()){
+	public Observable<Photos> getPhoto(String request) {
+		if (NetworkStatus.isOnline()) {
 			//если онлайн, получаем из сети
 			return api
 					.getPhotos(Constant.TOKEN_KEY, request)
@@ -29,7 +29,7 @@ public class PhotosRepo {
 						cache.putPhoto(photos);
 						return photos;
 					});
-		} else{
+		} else {
 			//если офлайн, из кеша
 			return cache.getPhoto();
 		}
