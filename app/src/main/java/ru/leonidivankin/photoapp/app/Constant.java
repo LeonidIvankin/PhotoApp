@@ -19,4 +19,7 @@ public interface Constant {
 	//send intent
 	String SEND_INTENT_FROM_MAINACTIVITY_TO_PHOTOACTIVITY = "sendIntentFromMainactivityToPhotoactivity";
 
+	//length
+	int MAX_LENGTH_TAG = 20;
+
 }

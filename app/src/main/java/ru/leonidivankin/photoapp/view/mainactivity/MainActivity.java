@@ -4,7 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.view.KeyEvent;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ProgressBar;
 
 import com.arellomobile.mvp.MvpAppCompatActivity;
@@ -22,7 +26,7 @@ import ru.leonidivankin.photoapp.app.Constant;
 import ru.leonidivankin.photoapp.presenter.MainPresenter;
 import ru.leonidivankin.photoapp.view.photoactivity.PhotoActivity;
 
-public class MainActivity extends MvpAppCompatActivity implements MainView{
+public class MainActivity extends MvpAppCompatActivity implements MainView {
 
 
 	private RecyclerViewAdapter adapter;
@@ -31,7 +35,10 @@ public class MainActivity extends MvpAppCompatActivity implements MainView{
 	@Inject App app;
 
 	@BindView(R.id.recycler_view) RecyclerView recyclerView;
-	@BindView(R.id.pb_loading) ProgressBar loadingProgressBar;
+	@BindView(R.id.progress_bar_loading) ProgressBar loadingProgressBar;
+	@BindView(R.id.button_enter_request) Button buttonEnterRequest;
+	@BindView(R.id.edit_text_enter_request) EditText editTextEnterRequest;
+	@BindView(R.id.toolbar) Toolbar toolbar;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -39,8 +46,33 @@ public class MainActivity extends MvpAppCompatActivity implements MainView{
 		setContentView(R.layout.activity_main);
 
 		ButterKnife.bind(this);
+
 		//inject для Dagger
 		App.getInstance().getAppComponent().inject(this);
+
+		initListeners();
+	}
+
+	private void initListeners() {
+		buttonEnterRequest.setOnClickListener(v -> {
+			enterRequest();
+		});
+
+
+		editTextEnterRequest.setOnKeyListener((v, keyCode, event) -> {
+			if (event.getAction() == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
+				enterRequest();
+				return true;
+			}
+			return false;
+		});
+	}
+
+	private void enterRequest() {
+		String request = editTextEnterRequest.getText().toString();
+		if (!request.isEmpty()) {
+			presenter.enterRequest(request);
+		}
 	}
 
 	@ProvidePresenter

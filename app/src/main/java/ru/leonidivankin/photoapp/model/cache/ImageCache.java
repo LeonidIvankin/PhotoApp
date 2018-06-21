@@ -96,4 +96,14 @@ public class ImageCache {
 	public File getImageDir() {
 		return new File(App.getInstance().getExternalFilesDir(null) + "/" + Constant.IMAGE_FOLDER_NAME_PREVIEW_URL);
 	}
+
+	//очистка папки
+	public void clearDir(){
+		File[] files = getImageDir().listFiles();
+		if(files != null){
+			for(File file : files) {
+			    file.delete();
+			}
+		}
+	}
 }

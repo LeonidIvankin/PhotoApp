@@ -16,6 +16,8 @@ import ru.leonidivankin.photoapp.R;
 import ru.leonidivankin.photoapp.app.App;
 import ru.leonidivankin.photoapp.model.image.IImageLoader;
 
+import static ru.leonidivankin.photoapp.app.Constant.MAX_LENGTH_TAG;
+
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.RecyclerViewHolder> {
 
 	private IListPresenter presenter;
@@ -49,6 +51,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 	}
 
 	class RecyclerViewHolder extends RecyclerView.ViewHolder implements ListPhotosView {
+
 		@BindView(R.id.text_view_item_tag) TextView textViewItemTag;
 		@BindView(R.id.image_view_item_recycler_view) ImageView imageViewItemRecyclerView;
 		int pos = 0;
@@ -56,6 +59,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 		public RecyclerViewHolder(View itemView) {
 			super(itemView);
 			ButterKnife.bind(this, itemView);
+
 		}
 
 		//загружаем фото

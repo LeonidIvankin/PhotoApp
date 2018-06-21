@@ -8,5 +8,5 @@ import ru.leonidivankin.photoapp.model.entity.Photos;
 public interface ApiService {
 
 	@GET("api")
-	Observable<Photos> getPhotos(@Query("key") String key);
+	Observable<Photos> getPhotos(@Query("key") String key, @Query("q") String request);
 }

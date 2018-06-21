@@ -42,7 +42,7 @@ public class GlideImageLoader implements IImageLoader<ImageView> {
 
 						@Override
 						public boolean onResourceReady(Bitmap resource, Object model, Target<Bitmap> target, DataSource dataSource, boolean isFirstResource) {
-							//сохраняем все картинку
+							//сохраняем картинку
 							imageCache.save(url, resource);
 
 							return false;
@@ -62,4 +62,5 @@ public class GlideImageLoader implements IImageLoader<ImageView> {
 		}
 
 	}
+
 }

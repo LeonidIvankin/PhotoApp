@@ -18,6 +18,8 @@ import ru.leonidivankin.photoapp.view.mainactivity.ListPhotosView;
 import ru.leonidivankin.photoapp.view.mainactivity.MainView;
 import timber.log.Timber;
 
+import static ru.leonidivankin.photoapp.app.Constant.MAX_LENGTH_TAG;
+
 @InjectViewState
 public class MainPresenter extends MvpPresenter<MainView>{
 	private Scheduler mainThreadScheduler;
@@ -36,9 +38,18 @@ public class MainPresenter extends MvpPresenter<MainView>{
 		@Override
 		public void bindView(ListPhotosView holder) {
 			holder.setPreviewUrl(photos.get(holder.getPos()).getPreviewURL());
-			holder.setTags(photos.get(holder.getPos()).getTags());
+
+			String tag = maxLength(photos.get(holder.getPos()).getTags());
+
+			holder.setTags(tag);
 		}
 
+		public String maxLength(String str) {
+			if(str.length() > MAX_LENGTH_TAG){
+				return str.substring(0, MAX_LENGTH_TAG) + "...";
+			}
+			return str;
+		}
 
 
 		@Override
@@ -56,16 +67,22 @@ public class MainPresenter extends MvpPresenter<MainView>{
 	protected void onFirstViewAttach() {
 		super.onFirstViewAttach();
 		getViewState().initRecyclerView();
+
 		loadPhotos();
 	}
 
-	private void loadPhotos() {
-		Disposable disposable = photosRepo.getPhoto()
+	public void enterRequest(String request){
+		loadPhotos(request);
+	}
+
+	private void loadPhotos(String request) {
+		Disposable disposable = photosRepo.getPhoto(request)
 				.observeOn(mainThreadScheduler)
 				.subscribe(photo -> {
 					//возвращаем объект с распарсеным json
 					Timber.d("result in " + Thread.currentThread().getName());
 					//передаём все url
+					this.listPresenter.photos.clear();
 					this.listPresenter.photos.addAll(photo.getHits());
 					getViewState().updateRecyclerView();
 					getViewState().hideLoading();
@@ -75,6 +92,12 @@ public class MainPresenter extends MvpPresenter<MainView>{
 
 				});
 	}
+
+	private void loadPhotos() {
+		loadPhotos("");
+	}
+
+
 
 	public ListPresenter getListPresenter(){
 		return listPresenter;

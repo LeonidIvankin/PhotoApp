@@ -18,11 +18,11 @@ public class PhotosRepo {
 		this.api = api;
 	}
 
-	public Observable<Photos> getPhoto(){
+	public Observable<Photos> getPhoto(String request){
 		if(NetworkStatus.isOnline()){
 			//если онлайн, получаем из сети
 			return api
-					.getPhotos(Constant.TOKEN_KEY)
+					.getPhotos(Constant.TOKEN_KEY, request)
 					.subscribeOn(Schedulers.io())
 					.map(photos -> {
 						//записываем в кеш
