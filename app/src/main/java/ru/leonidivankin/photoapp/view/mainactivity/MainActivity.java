@@ -25,7 +25,7 @@ import ru.leonidivankin.photoapp.app.Constant;
 import ru.leonidivankin.photoapp.presenter.MainPresenter;
 import ru.leonidivankin.photoapp.view.photoactivity.PhotoActivity;
 
-public class MainActivity extends MvpAppCompatActivity implements MainView {
+public class MainActivity extends MvpAppCompatActivity implements MainView, IClickPhoto {
 
 
 	private RecyclerViewAdapter adapter;
@@ -80,7 +80,7 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
 	@Override
 	public void initRecyclerView() {
 		recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
-		adapter = new RecyclerViewAdapter(presenter.getListPresenter());
+		adapter = new RecyclerViewAdapter(presenter.getListPresenter(), this);
 		recyclerView.setAdapter(adapter);
 	}
 
@@ -100,12 +100,9 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
 	}
 
 	@Override
-	public void sendIntentPosition(int position) {
+	public void clickPhoto(int position) {
 		Intent intent = new Intent(this, PhotoActivity.class);
 		intent.putExtra(Constant.SEND_INTENT_FROM_MAINACTIVITY_TO_PHOTOACTIVITY, position);
 		startActivity(intent);
-
 	}
-
-
 }

@@ -5,5 +5,4 @@ public interface IListPresenter {
 
 	int getPhotosCount();
 
-	void onClickPhoto(int position);
 }

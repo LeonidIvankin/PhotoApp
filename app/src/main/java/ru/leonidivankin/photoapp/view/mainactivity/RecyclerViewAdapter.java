@@ -1,5 +1,6 @@
 package ru.leonidivankin.photoapp.view.mainactivity;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -21,9 +22,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 	private IListPresenter presenter;
 	@Inject
 	IImageLoader<ImageView> imageLoader;
+	IClickPhoto iClickPhoto;
 
-	public RecyclerViewAdapter(IListPresenter presenter) {
+	public RecyclerViewAdapter(IListPresenter presenter, Context context) {
 		this.presenter = presenter;
+		iClickPhoto = (IClickPhoto) context;
 		//inject для Dagger
 		App.getInstance().getAppComponent().inject(this);
 	}
@@ -39,7 +42,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 		holder.pos = position;
 		presenter.bindView(holder);
 		holder.setListener(v -> {
-			presenter.onClickPhoto(position);
+			iClickPhoto.clickPhoto(position);
 		});
 	}
 

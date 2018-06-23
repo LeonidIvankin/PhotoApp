@@ -56,10 +56,6 @@ public class MainPresenter extends MvpPresenter<MainView> {
 			return photos.size();
 		}
 
-		@Override
-		public void onClickPhoto(int position) {
-			getViewState().sendIntentPosition(position);
-		}
 	}
 
 	@Override
